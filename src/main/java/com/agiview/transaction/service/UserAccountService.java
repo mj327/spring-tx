@@ -30,41 +30,60 @@ public class UserAccountService {
 
     public void transferMoney(String sourceName, String targetName, BigDecimal money) {
 
-        try {
+//        try {
+//
+//            txManager.open();
+//
+//            UserAccount sourceUserAccount = userAccountDao.findByName(sourceName);
+//
+//            BigDecimal sourceBalance = sourceUserAccount.getBalance().subtract(money);
+//
+//            sourceUserAccount.setBalance(sourceBalance);
+//
+//            userAccountDao.update(sourceUserAccount);
+//
+//            int i = 1/0;
+//
+//            UserAccount targetUserAccount = userAccountDao.findByName(targetName);
+//
+//            BigDecimal targetBalance = targetUserAccount.getBalance().add(money);
+//
+//            targetUserAccount.setBalance(targetBalance);
+//
+//            userAccountDao.update(targetUserAccount);
+//
+//            txManager.commit();
+//
+//        } catch (Exception e) {
+//
+//            e.printStackTrace();
+//
+//            txManager.rollback();
+//
+//        } finally {
+//
+//            txManager.close();
+//
+//        }
 
-            txManager.open();
 
-            UserAccount sourceUserAccount = userAccountDao.findByName(sourceName);
+        UserAccount sourceUserAccount = userAccountDao.findByName(sourceName);
 
-            BigDecimal sourceBalance = sourceUserAccount.getBalance().subtract(money);
+        BigDecimal sourceBalance = sourceUserAccount.getBalance().subtract(money);
 
-            sourceUserAccount.setBalance(sourceBalance);
+        sourceUserAccount.setBalance(sourceBalance);
 
-            userAccountDao.update(sourceUserAccount);
+        userAccountDao.update(sourceUserAccount);
 
-            int i = 1/0;
+        int i = 1/0;
 
-            UserAccount targetUserAccount = userAccountDao.findByName(targetName);
+        UserAccount targetUserAccount = userAccountDao.findByName(targetName);
 
-            BigDecimal targetBalance = targetUserAccount.getBalance().add(money);
+        BigDecimal targetBalance = targetUserAccount.getBalance().add(money);
 
-            targetUserAccount.setBalance(targetBalance);
+        targetUserAccount.setBalance(targetBalance);
 
-            userAccountDao.update(targetUserAccount);
-
-            txManager.commit();
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-            txManager.rollback();
-
-        } finally {
-
-            txManager.close();
-
-        }
+        userAccountDao.update(targetUserAccount);
     }
 
 }
